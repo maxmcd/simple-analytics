@@ -1,0 +1,1 @@
+ssh -i ./deploy/general.pem ubuntu@52.0.221.128 'bash -s' < ./deploy/remote.sh

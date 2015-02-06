@@ -2,6 +2,7 @@ package model
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/lib/pq"
@@ -38,7 +39,18 @@ type Request struct {
 func init() {
 	var err error
 
-	DB, err = gorm.Open("postgres", "dbname=kayobe sslmode=disable")
+	host := os.Getenv("KAYOBE_HOST")
+	if host != "" {
+		port := os.Getenv("KAYOBE_PORT")
+		dbname := os.Getenv("KAYOBE_DBNAME")
+		username := os.Getenv("KAYOBE_USERNAME")
+		password := os.Getenv("KAYOBE_PASSWORD")
+		configString := "host=" + host + " port=" + port + " user=" + username + " password=" + password + " sslmode=disable dbname=" + dbname
+		DB, err = gorm.Open("postgres", configString)
+	} else {
+		DB, err = gorm.Open("postgres", "dbname=kayobe sslmode=disable")
+	}
+
 	if err != nil {
 		fmt.Println(err)
 	}

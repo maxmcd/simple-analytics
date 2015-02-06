@@ -4,9 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/maxmcd/kayobe/controllers"
-
 	"github.com/gorilla/mux"
+	"github.com/maxmcd/kayobe/controllers"
 )
 
 const (
