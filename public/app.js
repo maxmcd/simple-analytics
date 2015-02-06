@@ -19,5 +19,6 @@ function longpoll(url, callback) {
 }
 function writeToBody(text) {
     document.getElementById('home').innerHTML = text
+    $('.requests').append('<li><small>new request</small></li>')
 }
-longpoll("/poll", writeToBody)
+longpoll("/poll/", writeToBody)

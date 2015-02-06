@@ -6,11 +6,25 @@
         <title>Kayobe</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
         <script src="/public/app.js"></script>
+        <link rel="stylesheet" href="/public/style.css">
+        <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
     </head>
     <body>
-    this is the dashboard
-    <div id="home"></div>
+    <div class="container">
+        <br><br>
+        <h2>http://kayo.be</h2>
+        <h4>Visitors:</h4>
+        <h1>
+        <div id="home">{{.}}</div>            
+        </h1>
+        Requests:
+        <div class="row">
+            <div class="requests"></div>    
+        </div>
+                
+    </div>
 
     </body>
 </html>
