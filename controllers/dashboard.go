@@ -1,8 +1,9 @@
 package controllers
 
 import (
-	"kayobe/util"
 	"net/http"
+
+	"github.com/maxmcd/kayobe/util"
 )
 
 func DashboardHandler(w http.ResponseWriter, r *http.Request) {

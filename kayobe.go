@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"kayobe/controllers"
+	"github.com/maxmcd/kayobe/controllers"
 
 	"github.com/gorilla/mux"
 )

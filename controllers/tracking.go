@@ -4,11 +4,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"kayobe/model"
-	"kayobe/util"
 	"net/http"
 	"strconv"
 	"time"
+
+	"github.com/maxmcd/kayobe/model"
+	"github.com/maxmcd/kayobe/util"
 )
 
 var messages chan string

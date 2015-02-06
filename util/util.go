@@ -1,10 +1,11 @@
 package util
 
 import (
-	"kayobe/model"
 	"net/http"
 	"text/template"
 	"time"
+
+	"github.com/maxmcd/kayobe/model"
 )
 
 func RenderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
