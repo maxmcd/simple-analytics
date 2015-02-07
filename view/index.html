@@ -1,16 +1,24 @@
-<!doctype html>
-<html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Kayobe</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="/app.js"></script>
-    </head>
-    <body>
-    this is the index, isn't it cool?
-    <div id="home"></div>
+{{template "header"}}
+<body>
+<div class="container">
+<br>
+<h2>Kayobe</h2>
+<p>
+    Simple analytics
+</p>
 
-    </body>
-</html>
+<a class="button" href="/dashboard">Dashboard</a>
+
+<div>
+    <pre><code>(function(k,a,y,o,b,e){k.kayobeAnalyticsObject=o;k[o]||(k[o]=
+function(){(k[o].q=k[o].q||[]).push(arguments)});k[o].o=+new Date;
+b=a.createElement(y);e=a.getElementsByTagName(y)[0];
+b.src='http://localhost:8000/analytics.js';
+e.parentNode.insertBefore(b,e)}(window,document,'script','kb'));
+kb("request","key");
+</code></pre>
+</div>
+</div>
+
+</body>
+{{template "footer"}}

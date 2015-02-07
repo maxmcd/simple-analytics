@@ -8,9 +8,10 @@ import (
 	"github.com/maxmcd/kayobe/model"
 )
 
+var T = template.Must(template.ParseGlob("view/*"))
+
 func RenderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
-	t, _ := template.ParseFiles("view/" + tmpl + ".html")
-	t.Execute(w, data)
+	T.ExecuteTemplate(w, tmpl+".html", data)
 }
 
 func GetActiveSessions() (count int) {
