@@ -1,0 +1,18 @@
+{{template "header"}}
+<body>
+    <div class="container">
+        <h2>{{.Name}}</h2>
+        <form action="/{{.Action}}/" method="POST">
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" autofocus>                
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password">
+            </div>
+            <input type="submit" value="{{.Submit}}">
+        </form>  
+    </div>
+</body>
+{{template "footer"}}

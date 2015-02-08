@@ -23,10 +23,12 @@ func main() {
 	r := mux.NewRouter()
 	r.StrictSlash(true)
 	r.HandleFunc("/dashboard/", controllers.DashboardHandler)
-	r.HandleFunc("/push/", controllers.PushHandler)
 	r.HandleFunc("/poll/", controllers.PollHandler)
 	r.HandleFunc("/api/{command}/", controllers.ApiHandler)
 	r.HandleFunc("/request/", controllers.TrackingHandler)
+	r.HandleFunc("/requests/", controllers.RequestsHandler)
+	r.HandleFunc("/login/", controllers.LoginHandler)
+	r.HandleFunc("/sign-up/", controllers.SignupHandler)
 	r.HandleFunc("/", controllers.IndexHandler)
 	r.PathPrefix("/").Handler(http.FileServer(http.Dir("./public/")))
 

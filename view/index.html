@@ -1,24 +1,25 @@
 {{template "header"}}
+
 <body>
-<div class="container">
-<br>
-<h2>Kayobe</h2>
-<p>
-    Simple analytics
-</p>
+    <div class="container">
+        <br>
+        <h2>Kayobe</h2>
+        <p>
+            Simple analytics
+        </p>
 
-<a class="button" href="/dashboard">Dashboard</a>
+        <a class="button" href="/dashboard">Dashboard</a>
 
-<div>
-    <pre><code>(function(k,a,y,o,b,e){k.kayobeAnalyticsObject=o;k[o]||(k[o]=
+        <div>
+            <pre><code>(function(k,a,y,o,b,e){k.kayobeAnalyticsObject=o;k[o]||(k[o]=
 function(){(k[o].q=k[o].q||[]).push(arguments)});k[o].o=+new Date;
 b=a.createElement(y);e=a.getElementsByTagName(y)[0];
 b.src='http://localhost:8000/analytics.js';
 e.parentNode.insertBefore(b,e)}(window,document,'script','kb'));
 kb("request","key");
 </code></pre>
-</div>
-</div>
+        </div>
+    </div>
 
 </body>
 {{template "footer"}}
